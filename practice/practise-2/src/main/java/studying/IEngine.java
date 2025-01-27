@@ -1,5 +1,7 @@
 package studying;
-
+/**
+ * Интерфейс с метадом boolean isCompatible(Customer customer)
+ */
 public interface IEngine {
 
     /**

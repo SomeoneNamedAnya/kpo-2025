@@ -2,18 +2,29 @@ package studying;
 
 import java.util.Objects;
 
+/**
+ * Класс для моделирования покупки (подбору) автомобилей по имеющимся автомобилям и имеющимся покупателям
+ */
 public class HseCarService {
 
     private final ICarProvider carProvider;
 
     private final ICustomerProvider customerProvider;
 
+    /**
+     * Конструктор класса
+     * @param carProvider - параметор по предоставлению имеющихся автомобилей
+     * @param customersProvider - параметр по предоставлению имеющихся покупателей
+     */
     public HseCarService(ICarProvider carProvider, ICustomerProvider customersProvider)
     {
         this.carProvider = carProvider;
         this.customerProvider = customersProvider;
     }
 
+    /**
+     * Метод назначения имеющимся покупателям имеющиеся машины
+     */
     public void sellCars()
     {
         // получаем список покупателей

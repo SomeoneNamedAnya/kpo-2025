@@ -3,17 +3,16 @@ package studying;
 import lombok.ToString;
 
 /**
- * Класс реализующий интерфейс IEngine, описывает двигатели для машин ручного привода
+ * Класс реализующий интерфейс IEngine, описывает двигатели для летающих машин
  */
 @ToString
-public class HandEngine implements IEngine{
+public class FlyEngin implements IEngine {
     /**
      * Метод определяющий подходит ли данному покупателю данный двигатель
      * @param customer - покупатель, с которым мы сравниваем двигатель
-     * @return true - подходит (HandPower > 5) иначе false
+     * @return true - подходит (iq > 300) иначе false
      */
-    @Override
     public boolean isCompatible(Customer customer) {
-        return customer.getHandPower() > 5;
+        return customer.getIq() > 300;
     }
 }

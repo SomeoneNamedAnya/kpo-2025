@@ -1,6 +1,14 @@
 package studying;
-
+/**
+ * Класс реализующий интерфейс ICarFactory, описывает фабрику создания педальных автомобилей
+ */
 public class PedalCarFactory implements ICarFactory<PedalEngineParams>{
+    /**
+     * Метод для создания объектов педальных автомобилей
+     * @param carParams - параметры двигателя для машины
+     * @param carNumber - номер машины
+     * @return - ссылка на созданную машину
+     */
     @Override
     public Car createCar(PedalEngineParams carParams, int carNumber) {
         var engine = new PedalEngine(carParams.pedalSize()); // создаем двигатель на основе переданных параметров

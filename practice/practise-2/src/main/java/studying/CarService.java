@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Класс создающий по параметрам и типу двигателя машины и назначающий их
+ */
 public class CarService implements ICarProvider{
 
     private final List<Car> cars = new ArrayList<>();
