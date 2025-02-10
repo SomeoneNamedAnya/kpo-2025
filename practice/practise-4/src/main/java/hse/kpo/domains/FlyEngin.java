@@ -1,5 +1,6 @@
-package hse.kpo.studying;
+package hse.kpo.domains;
 
+import hse.kpo.interfaces.IEngine;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 

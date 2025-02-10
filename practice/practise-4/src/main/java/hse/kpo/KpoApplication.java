@@ -1,6 +1,10 @@
 package hse.kpo;
+import hse.kpo.domains.*;
+import hse.kpo.factories.*;
+import hse.kpo.interfaces.*;
+import hse.kpo.params.*;
+import hse.kpo.services.*;
 
-import hse.kpo.studying.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +16,7 @@ public class KpoApplication {
 
 
 	public static void main(String[] args) {
+
 		ApplicationContext context = SpringApplication.run(KpoApplication.class, args);
 		CarService carService = context.getBean(CarService.class);
 		CustomerStorage customerStorage = context.getBean(CustomerStorage.class);

@@ -1,5 +1,7 @@
-package hse.kpo.studying;
+package hse.kpo.services;
 
+import hse.kpo.domains.Customer;
+import hse.kpo.interfaces.ICustomerProvider;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
  * Класс реализует интерфейс ICustomerProvider и хранит список покупателей
  */
 @Component
-public class CustomerStorage implements ICustomerProvider{
+public class CustomerStorage implements ICustomerProvider {
     private List<Customer> customers = new ArrayList<>();
 
     /**

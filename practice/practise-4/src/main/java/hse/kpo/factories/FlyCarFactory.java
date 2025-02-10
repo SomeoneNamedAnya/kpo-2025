@@ -1,12 +1,15 @@
-package hse.kpo.studying;
-
+package hse.kpo.factories;
+import hse.kpo.domains.Car;
+import hse.kpo.domains.FlyEngin;
+import hse.kpo.interfaces.ICarFactory;
+import hse.kpo.params.EmptyEngineParams;
 import org.springframework.stereotype.Component;
 
 /**
  * Класс реализующий интерфейс ICarFactory, описывает фабрику создания летающих автомобилей
  */
 @Component
-public class FlyCarFactory implements ICarFactory<EmptyEngineParams>{
+public class FlyCarFactory implements ICarFactory<EmptyEngineParams> {
     /**
      * Метод для создания объектов летающих машин
      * @param carParams - параметры двигателя для машины

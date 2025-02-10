@@ -1,4 +1,5 @@
-package hse.kpo.studying;
+package hse.kpo.interfaces;
+import hse.kpo.domains.Customer;
 
 import java.util.List;
 /**

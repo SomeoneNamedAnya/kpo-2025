@@ -1,5 +1,4 @@
-package hse.kpo.studying;
-
+package hse.kpo.params;
 /**
  * Запись - параметр для двигателей без параметров
  */

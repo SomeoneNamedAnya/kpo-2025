@@ -1,5 +1,7 @@
-package hse.kpo.studying;
+package hse.kpo.services;
 
+import hse.kpo.interfaces.ICarProvider;
+import hse.kpo.interfaces.ICustomerProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

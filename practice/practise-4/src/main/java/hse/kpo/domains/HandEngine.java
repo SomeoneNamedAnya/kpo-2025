@@ -1,12 +1,12 @@
-package hse.kpo.studying;
-
+package hse.kpo.domains;
+import hse.kpo.interfaces.IEngine;
 import lombok.ToString;
 
 /**
  * Класс реализующий интерфейс IEngine, описывает двигатели для машин ручного привода
  */
 @ToString
-public class HandEngine implements IEngine{
+public class HandEngine implements IEngine {
     /**
      * Метод определяющий подходит ли данному покупателю данный двигатель
      * @param customer - покупатель, с которым мы сравниваем двигатель

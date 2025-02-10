@@ -1,5 +1,4 @@
-package hse.kpo.studying;
-
+package hse.kpo.domains;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

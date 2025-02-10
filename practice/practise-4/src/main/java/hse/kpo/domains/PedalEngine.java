@@ -1,5 +1,6 @@
-package hse.kpo.studying;
+package hse.kpo.domains;
 
+import hse.kpo.interfaces.IEngine;
 import lombok.Getter;
 import lombok.ToString;
 /**
@@ -7,7 +8,7 @@ import lombok.ToString;
  */
 @ToString
 @Getter
-public class PedalEngine implements IEngine{
+public class PedalEngine implements IEngine {
     private final int size;
     /**
      * Метод определяющий подходит ли данному покупателю данный двигатель
