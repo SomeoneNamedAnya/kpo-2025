@@ -1,8 +1,7 @@
-package hse.kpo.interfaces;
-
-
-import hse.kpo.domains.Customer;
-
+package hse.kpo.studying;
+/**
+ * Интерфейс с метадом boolean isCompatible(Customer customer)
+ */
 public interface IEngine {
 
     /**

@@ -1,20 +1,38 @@
-package hse.kpo.services;
+package hse.kpo.studying;
 
-import hse.kpo.interfaces.ICarProvider;
-import hse.kpo.interfaces.ICustomerProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
+/**
+ * Класс для моделирования покупки (подбору) автомобилей по имеющимся автомобилям и имеющимся покупателям
+ */
 @Component
-@RequiredArgsConstructor
 public class HseCarService {
 
+    @Autowired
     private final ICarProvider carProvider;
 
+    @Autowired
     private final ICustomerProvider customerProvider;
 
+    /**
+     * Конструктор класса
+     * @param carProvider - параметор по предоставлению имеющихся автомобилей
+     * @param customersProvider - параметр по предоставлению имеющихся покупателей
+     */
+    @Autowired
+    public HseCarService(ICarProvider carProvider, ICustomerProvider customersProvider)
+    {
+        this.carProvider = carProvider;
+        this.customerProvider = customersProvider;
+    }
+
+    /**
+     * Метод назначения имеющимся покупателям имеющиеся машины
+     */
     public void sellCars()
     {
         // получаем список покупателей

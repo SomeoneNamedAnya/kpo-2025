@@ -1,16 +1,15 @@
-package hse.kpo.services;
+package hse.kpo.studying;
 
-import hse.kpo.domains.Car;
-import hse.kpo.domains.Customer;
-import hse.kpo.interfaces.ICarFactory;
-import hse.kpo.interfaces.ICarProvider;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс создающий по параметрам и типу двигателя машины и назначающий их
+ */
 @Component
-public class CarService implements ICarProvider {
+public class CarService implements ICarProvider{
 
     private final List<Car> cars = new ArrayList<>();
 
