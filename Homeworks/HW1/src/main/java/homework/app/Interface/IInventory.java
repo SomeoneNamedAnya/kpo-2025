@@ -8,6 +8,7 @@ public interface IInventory {
      * @return номер объекта
      */
     public int getInvNumber();
+    public void setInvNumber(int newInvNum);
     /**
      * Инвентаризационное название объекта (в случае животных это вид животного, например Monkey
      * у вещей будет название предмета, например Computer)

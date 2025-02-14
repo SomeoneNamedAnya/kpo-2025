@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 public class Vet {
     public Vet() {}
     public boolean medicalExamination(IAlive newEntity) {
-        return  newEntity.getAge() < newEntity.getMaxAge() / 2;
+        if (newEntity.getHealth() == -1) {
+            newEntity.setHealth((int)(Math.random() * 100));
+        }
+        return newEntity.getHealth() >= 10;
     }
 }

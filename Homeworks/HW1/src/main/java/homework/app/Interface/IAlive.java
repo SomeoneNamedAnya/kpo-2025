@@ -10,5 +10,7 @@ public interface IAlive {
      * @return уровень здоровья
      */
     public int getHealth();
+    public void setHealth(int newHealth);
+    public int getFood();
 
 }

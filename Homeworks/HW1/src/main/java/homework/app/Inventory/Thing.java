@@ -1,10 +1,14 @@
 package homework.app.Inventory;
 
+import homework.app.Interface.IInfo;
 import homework.app.Interface.IInventory;
 import lombok.Getter;
+import lombok.Setter;
+
 @Getter
-public class Thing implements IInventory {
-    private final int invNumber;
+public abstract class Thing implements IInventory, IInfo {
+    @Setter
+    private int invNumber;
     private final String invName;
 
     public Thing(int invNumber, String invName) {
