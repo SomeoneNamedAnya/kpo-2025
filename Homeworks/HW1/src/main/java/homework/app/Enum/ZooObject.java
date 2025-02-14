@@ -1,11 +1,15 @@
 package homework.app.Enum;
 
 import homework.app.Animal.Animal;
-import homework.app.Animal.AnimalExample.Monkey;
-import homework.app.Animal.AnimalExample.Rabbit;
-import homework.app.Animal.AnimalExample.Tiger;
-import homework.app.Animal.AnimalExample.Wolf;
+import homework.app.Animal.Monkey;
+import homework.app.Animal.Rabbit;
+import homework.app.Animal.Tiger;
+import homework.app.Animal.Wolf;
 
+/**
+ * Enum для удобной работы с животными в основной программе
+ * Также умеет строит экземпляры классов Monkey, Wolf, Tiger, Rabbit
+ */
 public enum  ZooObject {
     MONKEY("Monkey", true),
     RABBIT("Rabbit", true),
@@ -18,14 +22,31 @@ public enum  ZooObject {
         this.title = title;
         this.isHerbo = isHerbo;
     }
+
+    /**
+     * Красивое название объекта
+     * @return название рода объекта
+     */
     public String getTitle() {
         return this.title;
     }
 
+    /**
+     *
+     * @return - true - травядное / false - не травоядное
+     */
     public boolean getIsHerbo() {
         return isHerbo;
     }
 
+    /**
+     * Построит животное по соответствующему енаму
+     * @param name - имя животного
+     * @param age - возраст
+     * @param food - количество потребляемой еды
+     * @param kindness - добрата
+     * @return класс соответствующего животного
+     */
     public Animal buildSpecificAnimal(String name, int age, int food, int kindness) {
         return switch (this) {
             case MONKEY -> new Monkey(name, age, food, kindness);

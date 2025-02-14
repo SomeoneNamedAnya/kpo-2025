@@ -1,8 +1,10 @@
 package homework.app.Animal;
 
 import lombok.Getter;
-import lombok.Setter;
 
+/**
+ * Класс травоядных, дополнительно в конструкторе принимает доброту животного
+ */
 @Getter
 public class Herbo extends Animal {
     private final int kindness;
@@ -10,6 +12,11 @@ public class Herbo extends Animal {
         super(name, age, food, invName, maxAge);
         this.kindness = kindness;
     }
+
+    /**
+     * Информация о соответствующем травоядном
+     * @param numOfRecord - номер записи (так как каждая запись при печати нумеруется)
+     */
     public void printInfo(int numOfRecord) {
         System.out.printf("""
                         %d. -----------\s
@@ -28,6 +35,11 @@ public class Herbo extends Animal {
                 getKindness(),
                 getFood());
     }
+
+    /**
+     * Можно ли животное в контактный зоопарк
+     * @return true - можно / false - нельзя
+     */
     public boolean isContact() {
         return kindness > 5;
     }

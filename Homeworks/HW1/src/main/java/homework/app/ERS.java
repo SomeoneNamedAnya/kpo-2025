@@ -9,7 +9,9 @@ import org.springframework.context.ApplicationContext;
 
 import java.util.*;
 
-
+/**
+ * Основное приложение ERS
+ */
 @SpringBootApplication
 public class ERS {
     public static void main(String[] args) {

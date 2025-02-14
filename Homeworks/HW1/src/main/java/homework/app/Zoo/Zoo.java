@@ -1,17 +1,18 @@
 package homework.app.Zoo;
 import homework.app.Animal.Animal;
 import homework.app.Interface.IContact;
-import homework.app.Interface.IInfo;
 import homework.app.Inventory.Thing;
 import homework.app.Vet.Vet;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
+/**
+ * Класс зоопарка, зоопарк имеет с вет клиникой ассоциативную связь с помощью ioc контейнера
+ */
 @Component
 public class Zoo {
     private int curInvNum = 1;
@@ -25,6 +26,12 @@ public class Zoo {
     public Zoo(Vet vetClinic) {
         this.vetClinic = vetClinic;
     }
+
+    /**
+     * Добаление нового животного в зоопарк
+     * @param animal - добавляемое животное
+     * @return true если ветклиника утвердила животное и его приняли / false - животное не приняли
+     */
     public boolean addAnimal(Animal animal) {
         if (vetClinic.medicalExamination(animal)) {
             animal.setInvNumber(curInvNum);
@@ -36,6 +43,9 @@ public class Zoo {
         }
     }
 
+    /**
+     * Составление отчета о количестве потребляемой еды животными
+     */
     public void makeAnimalFoodReport() {
         System.out.printf("Total: %d\n", listAnimals.size());
         System.out.println("-------------------------");
@@ -53,6 +63,9 @@ public class Zoo {
         System.out.printf("Total amount of food (kg): %d\n", totalFood.get());
     }
 
+    /**
+     * Составление отчета о всех животных, которых можно отправить в контактный зоопарк
+     */
     public void makeContactAnimalReport() {
         System.out.printf("Total: %d\n", (int) listAnimals.stream().filter(IContact::isContact).count());
         System.out.println("-------------------------");
@@ -63,6 +76,9 @@ public class Zoo {
                 .forEach(i -> listAnimals.get(i).printInfo(count.getAndIncrement()));
     }
 
+    /**
+     * Состовление отчета обо всех предметах, что находятся в зоопарке (животные, предметы)
+     */
     public void makeGeneralReport() {
         System.out.println("Animals");
         System.out.printf("Total: %d\n", listAnimals.size());
@@ -71,7 +87,7 @@ public class Zoo {
         AtomicInteger count = new AtomicInteger(1);
         IntStream.range(0, listAnimals.size())
                 .forEach(i -> listAnimals.get(i).printInfo(count.getAndIncrement()));
-
+        System.out.println("-------------------------");
         System.out.println("Things");
         System.out.printf("Total: %d\n", listThing.size());
         System.out.println("-------------------------");

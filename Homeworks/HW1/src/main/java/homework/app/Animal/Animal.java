@@ -8,7 +8,7 @@ import homework.app.Interface.IAlive;
 import homework.app.Interface.IInventory;
 
 /**
- *
+ * Класс животных
  */
 @Getter
 public abstract class Animal implements IAlive, IInventory, IInfo, IContact {

@@ -5,6 +5,9 @@ import homework.app.Interface.IInventory;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Класс предметов в зоопарке (для будущего из условия)
+ */
 @Getter
 public abstract class Thing implements IInventory, IInfo {
     @Setter
