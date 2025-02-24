@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ReportSalesObserver implements SalesObserver {
     private final CustomerStorage customerStorage;
 
-    private final hse.kpo.Builders.ReportBuilder reportBuilder = new hse.kpo.Builders.ReportBuilder();
+    private final hse.kpo.builders.ReportBuilder reportBuilder = new hse.kpo.builders.ReportBuilder();
 
     public Report buildReport() {
         return reportBuilder.build();
