@@ -15,11 +15,10 @@ public class PedalEngine implements IEngine {
 
     @Override
     public boolean isCompatible(Customer customer, ProductionTypes type) {
-        if(type == null) throw new RuntimeException("This type of production doesn't exist");
         return switch (type) {
             case CAR -> customer.getLegPower() > 5;
             case CATAMARAN -> customer.getLegPower() >= 2;
-            default -> throw new RuntimeException("This type of production doesn't exist");
+            case null, default -> throw new RuntimeException("This type of production doesn't exist");
         };
     }
 

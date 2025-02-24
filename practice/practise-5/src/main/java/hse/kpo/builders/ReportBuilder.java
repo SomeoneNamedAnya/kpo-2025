@@ -10,7 +10,7 @@ import java.util.List;
 public class ReportBuilder {
     StringBuilder content = new StringBuilder();
     public ReportBuilder addCustomers(List<Customer> customers) {
-        content.append("Покупатели:");
+        content.append(" :");
         customers.forEach(customer -> content.append(String.format(" - %s", customer)));
         content.append("\n");
 

@@ -7,6 +7,8 @@ import hse.kpo.factories.cars.PedalCarFactory;
 import hse.kpo.factories.ships.HandShipFactory;
 import hse.kpo.factories.ships.LevitationShipFactory;
 import hse.kpo.factories.ships.PedalShipFactory;
+import hse.kpo.observer.ReportSalesObserver;
+import hse.kpo.observer.SalesObserver;
 import hse.kpo.params.*;
 import hse.kpo.services.*;
 import lombok.extern.slf4j.Slf4j;
@@ -62,42 +64,19 @@ public class KpoApplication {
 		shipStorage.addShip(levitationShipFactory, EmptyEngineParams.DEFAULT);
 
 		log.info("Загрузка катамаранов закончилась");
+		var temp =  new ReportSalesObserver(customerStorage);
 
+		hseCarService.addObserver(temp);
+		hseShipService.addObserver(temp);
 
-
-		var reportBuilderForCar = new ReportBuilder()
-				.addOperation("Инициализация системы")
-				.addCustomers(customerStorage.getCustomers());
-
-		log.info("Продажа машин начата");
-		hseCarService.sellCars();
-		log.info("Продажа машин закончена");
-
-		log.info("Составление отчета о продаже машин начато");
-		var carReport = reportBuilderForCar
-				.addOperation("Продажа автомобилей")
-				.addCustomers(customerStorage.getCustomers())
-				.build();
-
-		log.info("Составление отчета о продаже машин закончено");
-
-		var reportBuilderForShip = new ReportBuilder()
-				.addOperation("Инициализация системы")
-				.addCustomers(customerStorage.getCustomers());
-
-		log.info("Продажа катамаранов начата");
 		hseShipService.sellShip();
-		log.info("Продажа катамаранов закончена");
 
-		log.info("Составление отчета о продаже катамаранов начато");
-		var shipReport = reportBuilderForShip
-				.addOperation("Продажа катамаранов")
-				.addCustomers(customerStorage.getCustomers())
-				.build();
 
-		log.info("Составление отчета о продаже катамаранов закончено");
-		System.out.println(carReport.toString());
-		System.out.println(shipReport.toString());
+		hseCarService.sellCars();
+
+
+
+		System.out.println(temp.buildReport());
 
 		log.info("Работа приложения закончилась");
 
