@@ -1,13 +1,12 @@
 package hse.kpo;
 
-import hse.kpo.builders.ReportBuilder;
 import hse.kpo.domains.Customer;
 import hse.kpo.factories.cars.HandCarFactory;
 import hse.kpo.factories.cars.PedalCarFactory;
 import hse.kpo.params.EmptyEngineParams;
 import hse.kpo.params.PedalEngineParams;
-import hse.kpo.storages.CarStorage;
-import hse.kpo.storages.CustomerStorage;
+import hse.kpo.services.CarStorage;
+import hse.kpo.services.CustomerStorage;
 import hse.kpo.services.HseCarService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -44,33 +43,21 @@ class KpoApplicationTests {
 	@Test
 	@DisplayName("Тест загрузки контекста")
 	void hseCarServiceTest() {
-		customerStorage.addCustomer(Customer.builder().name("Ivan1").legPower(6).handPower(4).build());
-		customerStorage.addCustomer(Customer.builder().name("Maksim").legPower(4).handPower(6).build());
-		customerStorage.addCustomer(Customer.builder().name("Petya").legPower(6).handPower(6).build());
-		customerStorage.addCustomer(Customer.builder().name("Nikita").legPower(4).handPower(4).build());
+		customerStorage.addCustomer(new Customer("Ivan1",6,4, 80));
+		customerStorage.addCustomer(new Customer("Maksim",4,6, 50));
+		customerStorage.addCustomer(new Customer("Petya",6,6, 120));
+		customerStorage.addCustomer(new Customer("Nikita",4,4, 100));
 
 		carStorage.addCar(pedalCarFactory, new PedalEngineParams(6));
 		carStorage.addCar(pedalCarFactory, new PedalEngineParams(6));
 
 		carStorage.addCar(handCarFactory, EmptyEngineParams.DEFAULT);
 		carStorage.addCar(handCarFactory, EmptyEngineParams.DEFAULT);
-
 		customerStorage.getCustomers().stream().map(Customer::toString).forEach(System.out::println);
-
-		var reportBuilder = new ReportBuilder()
-				.addOperation("Инициализация системы")
-				.addCustomers(customerStorage.getCustomers());
 
 		hseCarService.sellCars();
 
 		customerStorage.getCustomers().stream().map(Customer::toString).forEach(System.out::println);
-		var report = reportBuilder
-				.addOperation("Продажа автомобилей")
-				.addCustomers(customerStorage.getCustomers())
-				.build();
-
-		System.out.println();
-		System.out.println(report.toString());
 	}
 
 }

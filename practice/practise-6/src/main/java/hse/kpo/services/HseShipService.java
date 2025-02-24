@@ -4,6 +4,7 @@ import hse.kpo.domains.Customer;
 import hse.kpo.enums.ProductionTypes;
 import hse.kpo.interfaces.ICarProvider;
 import hse.kpo.interfaces.ICustomerProvider;
+import hse.kpo.interfaces.IShipProvider;
 import hse.kpo.observer.Sales;
 import hse.kpo.observer.SalesObserver;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,8 @@ import java.util.Objects;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class HseCarService {
+public class HseShipService {
+    private final IShipProvider shipProvider;
     final List<SalesObserver> observers = new ArrayList<>();
     public void addObserver(SalesObserver observer) {
         observers.add(observer);
@@ -26,26 +28,22 @@ public class HseCarService {
         observers.forEach(obs -> obs.onSale(customer, productType, vin));
     }
 
-    private final ICarProvider carProvider;
-
     private final ICustomerProvider customerProvider;
     @Sales
-    public void sellCars()
+    public void sellShip()
     {
         // получаем список покупателей
         var customers = customerProvider.getCustomers();
         // пробегаемся по полученному списку
-        customers.stream().filter(customer -> Objects.isNull(customer.getCar()))
+        customers.stream().filter(customer -> Objects.isNull(customer.getShip()))
                 .forEach(customer -> {
-                    var car = carProvider.takeCar(customer);
-                    if (Objects.nonNull(car)) {
-                        notifyObserversForSale(customer, ProductionTypes.CAR, car.getVIN());
-                        customer.setCar(car);
+                    var ship = shipProvider.takeShip(customer);
+                    if (Objects.nonNull(ship)) {
+                        notifyObserversForSale(customer, ProductionTypes.CATAMARAN, ship.getHIN());
+                        customer.setShip(ship);
                     } else {
-                        log.warn("No car in CarService");
+                        log.warn("No ship in ShipService");
                     }
                 });
-
     }
-
 }

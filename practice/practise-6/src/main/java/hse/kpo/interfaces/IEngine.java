@@ -4,7 +4,7 @@ package hse.kpo.interfaces;
 import hse.kpo.domains.Customer;
 import hse.kpo.enums.ProductionTypes;
 
-public interface Engine {
+public interface IEngine {
 
     /**
      * Метод для проверки совместимости двигателя с покупателем.

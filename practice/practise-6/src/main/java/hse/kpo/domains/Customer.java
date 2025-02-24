@@ -10,7 +10,6 @@ import lombok.ToString;
  */
 @Getter
 @ToString
-@Builder
 public class Customer {
     private final String name;
 
@@ -24,5 +23,12 @@ public class Customer {
     private Car car;
 
     @Setter
-    private Catamaran catamaran;
+    private Ship ship;
+
+    public Customer(String name, int legPower, int handPower, int iq) {
+        this.name = name;
+        this.legPower = legPower;
+        this.handPower = handPower;
+        this.iq = iq;
+    }
 }

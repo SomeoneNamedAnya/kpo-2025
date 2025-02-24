@@ -2,21 +2,17 @@ package hse.kpo.factories.cars;
 
 
 import hse.kpo.domains.Car;
-import hse.kpo.domains.LevitationEngine;
 import hse.kpo.domains.PedalEngine;
-import hse.kpo.interfaces.cars.CarFactory;
+import hse.kpo.interfaces.ICarFactory;
 import hse.kpo.params.PedalEngineParams;
 import org.springframework.stereotype.Component;
 
-/**
- * Фабрика для создания машин с {@link PedalEngine} типом двигателя.
- */
 @Component
-public class PedalCarFactory implements CarFactory<PedalEngineParams> {
+public class PedalCarFactory implements ICarFactory<PedalEngineParams> {
     @Override
     public Car create(PedalEngineParams carParams, int carNumber) {
-        var engine = new PedalEngine(carParams.pedalSize());
+        var engine = new PedalEngine(carParams.pedalSize()); // создаем двигатель на основе переданных параметров
 
-        return new Car(carNumber, engine);
+        return new Car(carNumber, engine); // возвращаем собранный автомобиль с установленным двигателем и определенным номером
     }
 }

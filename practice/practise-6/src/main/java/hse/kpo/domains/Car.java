@@ -1,27 +1,24 @@
 package hse.kpo.domains;
 
 import hse.kpo.enums.ProductionTypes;
-import hse.kpo.interfaces.Engine;
+import hse.kpo.interfaces.IEngine;
 import lombok.Getter;
 import lombok.ToString;
 
-/**
- * Класс хранящий информацию о машине.
- */
 @ToString
 public class Car {
 
-    private Engine engine;
+    private IEngine engine;
 
     @Getter
-    private int vin;
+    private int VIN;
 
-    public Car(int vin, Engine engine) {
-        this.vin = vin;
+    public Car(int VIN, IEngine engine) {
+        this.VIN = VIN;
         this.engine = engine;
     }
 
     public boolean isCompatible(Customer customer) {
-        return this.engine.isCompatible(customer, ProductionTypes.CAR);
+        return this.engine.isCompatible(customer, ProductionTypes.CAR);// внутри метода просто вызываем соответствующий метод двигателя
     }
 }

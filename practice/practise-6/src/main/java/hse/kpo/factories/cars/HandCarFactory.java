@@ -2,16 +2,12 @@ package hse.kpo.factories.cars;
 
 import hse.kpo.domains.Car;
 import hse.kpo.domains.HandEngine;
-import hse.kpo.domains.LevitationEngine;
-import hse.kpo.interfaces.cars.CarFactory;
+import hse.kpo.interfaces.ICarFactory;
 import hse.kpo.params.EmptyEngineParams;
 import org.springframework.stereotype.Component;
 
-/**
- * Фабрика для создания машин с {@link HandEngine} типом двигателя.
- */
 @Component
-public class HandCarFactory implements CarFactory<EmptyEngineParams> {
+public class HandCarFactory implements ICarFactory<EmptyEngineParams> {
     @Override
     public Car create(EmptyEngineParams carParams, int carNumber) {
         var engine = new HandEngine(); // Создаем двигатель без каких-либо параметров

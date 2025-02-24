@@ -1,14 +1,85 @@
 package hse.kpo;
-
+import hse.kpo.builders.ReportBuilder;
+import hse.kpo.domains.*;
+import hse.kpo.factories.cars.HandCarFactory;
+import hse.kpo.factories.cars.LevitationCarFactory;
+import hse.kpo.factories.cars.PedalCarFactory;
+import hse.kpo.factories.ships.HandShipFactory;
+import hse.kpo.factories.ships.LevitationShipFactory;
+import hse.kpo.factories.ships.PedalShipFactory;
+import hse.kpo.observer.ReportSalesObserver;
+import hse.kpo.observer.SalesObserver;
+import hse.kpo.params.*;
+import hse.kpo.services.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-/**
- * Точка входа в приложение.
- */
+import org.springframework.context.ApplicationContext;
+@Slf4j
 @SpringBootApplication
 public class KpoApplication {
+
+
 	public static void main(String[] args) {
-		SpringApplication.run(KpoApplication.class, args);
+
+
+		ApplicationContext context = SpringApplication.run(KpoApplication.class, args);
+		CarStorage carService = context.getBean(CarStorage.class);
+		CustomerStorage customerStorage = context.getBean(CustomerStorage.class);
+		ShipStorage shipStorage = context.getBean(ShipStorage.class);
+		HseCarService hseCarService = context.getBean(HseCarService.class);
+		PedalCarFactory pedalCarFactory = context.getBean(PedalCarFactory.class);
+		HandCarFactory handCarFactory = context.getBean(HandCarFactory.class);
+		LevitationCarFactory levitationCarFactory = context.getBean(LevitationCarFactory.class);
+		HandShipFactory handShipFactory = context.getBean(HandShipFactory.class);
+		PedalShipFactory pedalShipFactory = context.getBean(PedalShipFactory.class);
+		LevitationShipFactory levitationShipFactory = context.getBean(LevitationShipFactory.class);
+		HseShipService hseShipService = context.getBean(HseShipService.class);
+
+		log.info("Подгрузились все зависимости");
+		log.info("Загрузка покупателей началась");
+
+		customerStorage.addCustomer(new Customer("Ivan1",6,4, 100));
+		customerStorage.addCustomer(new Customer("Maksim",4,6, 150));
+		customerStorage.addCustomer(new Customer("Petya",6,6, 250));
+		customerStorage.addCustomer(new Customer("Nikita",4,4, 300));
+		customerStorage.addCustomer(new Customer("Fifth", 1, 1, 400));
+
+		log.info("Загрузка покупателей закончилась");
+		log.info("Загрузка машин началась");
+
+		carService.addCar(pedalCarFactory, new PedalEngineParams(6));
+		carService.addCar(pedalCarFactory, new PedalEngineParams(6));
+		carService.addCar(handCarFactory, EmptyEngineParams.DEFAULT);
+		carService.addCar(handCarFactory, EmptyEngineParams.DEFAULT);
+		carService.addCar(levitationCarFactory, EmptyEngineParams.DEFAULT);
+
+		log.info("Загрузка машин закончилась");
+		log.info("Загрузка катамаранов началась");
+
+		shipStorage.addShip(pedalShipFactory, new PedalEngineParams(6));
+		shipStorage.addShip(pedalShipFactory, new PedalEngineParams(6));
+		shipStorage.addShip(handShipFactory, EmptyEngineParams.DEFAULT);
+		shipStorage.addShip(handShipFactory, EmptyEngineParams.DEFAULT);
+		shipStorage.addShip(levitationShipFactory, EmptyEngineParams.DEFAULT);
+
+		log.info("Загрузка катамаранов закончилась");
+		var temp =  new ReportSalesObserver(customerStorage);
+
+		hseCarService.addObserver(temp);
+		hseShipService.addObserver(temp);
+
+		hseShipService.sellShip();
+
+
+		hseCarService.sellCars();
+
+
+
+		System.out.println(temp.buildReport());
+
+		log.info("Работа приложения закончилась");
+
+		//customerStorage.getCustomers().stream().map(Customer::toString).forEach(System.out::println);
 	}
 }
