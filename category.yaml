@@ -1,0 +1,13 @@
+---
+- id: 1
+  type: "expense"
+  name: "Coffee"
+- id: 2
+  type: "income"
+  name: "Grant"
+- id: 3
+  type: "expense"
+  name: "Transaction_from"
+- id: 4
+  type: "income"
+  name: "Transaction_to"

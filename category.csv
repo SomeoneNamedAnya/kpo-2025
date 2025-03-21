@@ -1,0 +1,5 @@
+id,name,type
+1,Coffee,expense
+2,Grant,income
+3,Transaction_from,expense
+4,Transaction_to,income
