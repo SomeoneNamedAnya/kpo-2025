@@ -40,7 +40,7 @@ dependencies {
     implementation ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.0")
     implementation ("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.16.0")
 
-    implementation ("mysql:mysql-connector-java:8.0.27")
+    implementation("mysql:mysql-connector-java:8.0.33")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
