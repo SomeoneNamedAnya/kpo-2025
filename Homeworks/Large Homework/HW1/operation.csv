@@ -1,0 +1,7 @@
+id,type,bank_account_id,category_id,amount,date,description
+1,expense,1,1,330,2025-03-17T09:10:36,ice cherry bumble coffee
+2,expense,1,1,330,2025-03-18T10:40:10,hot orange bumble coffee
+3,expense,1,1,330,2025-03-20T11:32:16,hot cherry bumble coffee
+4,income,1,4,10000,2025-03-21T07:10:36,some money for coffee
+5,income,1,2,2100,2025-03-17T07:10:36,little present from university
+6,expense,1,1,330,2025-03-21T09:12:18,hot cherry bumble coffee
