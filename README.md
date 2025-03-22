@@ -6,4 +6,5 @@
 
 - [`/practice`](./practice) - материалы по практическим занятиям
 - [`/Homeworks`](./Homeworks) - папка с мини-домашними работами
-- - [`/Large Homework`](./Homeworks/Large Homework) - папка с большими домашними работами
+- [`/Homeworks`](./Homeworks/Large_Homework)
+- [`/Large Homework`](./Homeworks/Large Homework) - папка с большими домашними работами
