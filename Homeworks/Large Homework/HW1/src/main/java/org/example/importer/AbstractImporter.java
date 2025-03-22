@@ -16,8 +16,7 @@ public abstract class AbstractImporter {
                                   ArrayList<BankAccount> bankAccounts,
                                   String filename) {
         ArrayList<Map<String, String>> date = readFile(filename);
-        System.out.println(date);
-
+        if (date == null) return;
         for (Map<String, String> item : date) {
 
 
@@ -31,7 +30,7 @@ public abstract class AbstractImporter {
                                ArrayList<Category> categories,
                                String filename) {
         ArrayList<Map<String, String>> date = readFile(filename);
-
+        if (date == null) return;
         for (Map<String, String> item : date) {
             categories.add(categoryFactory.create(Integer.parseInt(item.get("id")), item.get("type"), item.get("name")));
         }
@@ -41,7 +40,7 @@ public abstract class AbstractImporter {
                                ArrayList<Operation> operations,
                                String filename) {
         ArrayList<Map<String, String>> date = readFile(filename);
-
+        if (date == null) return;
         for (Map<String, String> item : date) {
             operations.add(operationFactory.create(Integer.parseInt(item.get("id")),
                     item.get("type"), Integer.parseInt(item.get("bankAccountId")),

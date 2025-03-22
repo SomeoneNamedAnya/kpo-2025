@@ -10,8 +10,6 @@ import java.util.*;
 @Component
 public class Analytics {
     @Autowired
-    BankAccountManager bankAccountManager;
-    @Autowired
     OperationManager operationManager;
     @Autowired
     CategoryManager categoryManager;

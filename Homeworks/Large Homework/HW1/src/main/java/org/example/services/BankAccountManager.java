@@ -33,7 +33,7 @@ public class BankAccountManager implements IManager {
        return connection.insertBankAccount(bankAccountFactory.create(name, balance));
     }
 
-    public boolean deleteCategory(int id) {
+    public boolean deleteBankAccounts(int id) {
         List<BankAccount> realInd = connection.getBankAccount()
                 .stream()
                 .filter(x -> x.getId() == id)
@@ -48,7 +48,7 @@ public class BankAccountManager implements IManager {
 
     }
 
-    public boolean refactorCategory(int id, String newName) {
+    public boolean refactorBankAccounts(int id, String newName) {
         List<BankAccount> realInd = connection.getBankAccount()
                 .stream()
                 .filter(x -> x.getId() == id)
@@ -62,6 +62,14 @@ public class BankAccountManager implements IManager {
 
     public List<BankAccount> getAllBankAccounts() {
         return connection.getBankAccount();
+    }
+
+    public BankAccount getBankAccounts(int id) {
+        List<BankAccount> temp = connection.getBankAccount().stream().filter(x -> x.getId() == id).toList();
+        if (temp.size() == 1) {
+            return temp.get(0);
+        }
+        return null;
     }
 
     public void export(ReportType reportType, Writer writer) {

@@ -1,6 +1,7 @@
 package org.example.services;
 
 import lombok.Setter;
+import org.example.domains.Category;
 import org.example.domains.Operation;
 import org.example.factories.ReportExporterFactory;
 import org.example.factories.OperationFactory;
@@ -48,7 +49,13 @@ public class OperationManager implements IManager {
         return true;
 
     }
-
+    public Operation getOperation(int id) {
+        List<Operation> temp = connection.getOperation().stream().filter(x -> x.getId() == id).toList();
+        if (temp.size() == 1) {
+            return temp.get(0);
+        }
+        return null;
+    }
     public boolean refactorOperation(int id, String description) {
         List<Operation> realInd = connection.getOperation()
                 .stream().filter(x -> x.getId() == id)

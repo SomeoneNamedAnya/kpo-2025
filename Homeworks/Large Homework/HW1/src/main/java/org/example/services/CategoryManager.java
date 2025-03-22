@@ -1,6 +1,8 @@
 package org.example.services;
 
 import lombok.Setter;
+import org.example.date_base.Cache;
+import org.example.domains.BankAccount;
 import org.example.domains.Category;
 import org.example.factories.ReportExporterFactory;
 import org.example.factories.CategoryFactory;
@@ -32,6 +34,13 @@ public class CategoryManager implements IManager {
         return connection.insertCategory(categoryFactory.create(type, name));
     }
 
+    public Category getCategory(int id) {
+        List<Category> temp = connection.getCategory().stream().filter(x -> x.getId() == id).toList();
+        if (temp.size() == 1) {
+            return temp.get(0);
+        }
+        return null;
+    }
     public boolean deleteCategory(int id) {
         List<Category> realInd = connection.getCategory()
                                 .stream().filter(x -> x.getId() == id)

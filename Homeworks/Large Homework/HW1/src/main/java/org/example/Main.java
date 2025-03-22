@@ -7,12 +7,18 @@ import org.example.commands.balance.RecalculateCommand;
 import org.example.commands.create.CreateAccountCommand;
 import org.example.commands.create.CreateCategoryCommand;
 import org.example.commands.create.CreateOperationCommand;
+import org.example.commands.delete.DeleteAccountCommand;
+import org.example.commands.delete.DeleteCategoryCommand;
+import org.example.commands.delete.DeleteOperationCommand;
 import org.example.commands.export.CsvExportAllCommand;
 import org.example.commands.export.JsonExportAllCommand;
 import org.example.commands.export.YamlExportAllCommand;
 import org.example.commands.print_all.PrintAccountCommand;
 import org.example.commands.print_all.PrintCategoryCommand;
 import org.example.commands.print_all.PrintOperationCommand;
+import org.example.commands.refactor.RefactorAccountCommand;
+import org.example.commands.refactor.RefactorCategoryCommand;
+import org.example.commands.refactor.RefactorOperationCommand;
 import org.example.date_base.Cache;
 import org.example.importer.AbstractImporter;
 import org.example.importer.CsvImporter;
@@ -179,7 +185,15 @@ public class Main {
                 System.out.println("14) Экспортироват все данные в json");
                 System.out.println("15) Экспортироват все данные в yaml");
 
-                System.out.println("16) Завершить работу");
+                System.out.println("16) Удалить аккаунт");
+                System.out.println("17) Удалить категорию");
+                System.out.println("18) Удалить операцию");
+
+                System.out.println("19) Изменить аккаунт");
+                System.out.println("20) Изменить категорию");
+                System.out.println("21) Изменить операцию");
+
+                System.out.println("22) Завершить работу");
 
                 int action = -1;
                 try {
@@ -238,6 +252,24 @@ public class Main {
                         curCommand = new Decorator(new YamlExportAllCommand(bankAccountManager, categoryManager, operationManager));
                     }
                     case 16 -> {
+                        curCommand = new Decorator(new DeleteAccountCommand(bankAccountManager));
+                    }
+                    case 17 -> {
+                        curCommand = new Decorator(new DeleteCategoryCommand(categoryManager));
+                    }
+                    case 18 -> {
+                        curCommand = new Decorator(new DeleteOperationCommand(operationManager));
+                    }
+                    case 19 -> {
+                        curCommand = new Decorator(new RefactorAccountCommand(bankAccountManager));
+                    }
+                    case 20 -> {
+                        curCommand = new Decorator(new RefactorCategoryCommand(categoryManager));
+                    }
+                    case 21 -> {
+                        curCommand = new Decorator(new RefactorOperationCommand(operationManager));
+                    }
+                    case 22 -> {
                         isWorked = false;
                     }
                     default -> {
