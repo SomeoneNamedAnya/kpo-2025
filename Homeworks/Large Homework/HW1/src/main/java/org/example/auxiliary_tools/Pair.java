@@ -2,7 +2,6 @@ package org.example.auxiliary_tools;
 
 import lombok.Getter;
 
-//Я просто в шоке... 1:39 ночи, и я пишу класс Pair, которого нет в Java...
 @Getter
 public class Pair {
 
