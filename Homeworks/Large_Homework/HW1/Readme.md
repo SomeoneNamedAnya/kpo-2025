@@ -1,6 +1,6 @@
 ## Отчет по большому домашнему заданию 1
 1. Как запускать
-- Чтобы запустить основное приложение нужно запустить файл [Main](./src/main/java/org/example/Main)
+- Чтобы запустить основное приложение нужно запустить файл [Main](./src/main/java/org/example/Main.java)
 - Чтобы подключить базу данных нужно создать MySql бд с помощью [данного скрипта](./Script.sql) и указать url, username, password
 в файле [database.properties](./database.properties), на данный момент там просто пример
 - Чтобы запустить тесты нужно запустить [папку](./src/test/java/org/example/tests)
