@@ -52,4 +52,5 @@ a) Основная бизнесс логика прописана в серви
 в классе Enclosure есть методы delAnimal(), pushAnimal(), clean(), isAcceptable(), в классе FeedingSchedule 
 есть методы doSkip(), undoSkip(), make()
 - Есть Events доменные события AnimalMovedEvent, AnimalTreatEvent, CleaningEvent, FeedingTimeEvent
+
 в) Покрытие тестами 72%
