@@ -1,4 +1,4 @@
-# Занятие 11. БД
+# Занятие 11. Database
 
 ## Цель занятия
 - Научиться работать с базой данных.
@@ -83,9 +83,13 @@ public class AbstractEngine implements Engine {
 Нужно, чтобы каждый тип двигателя (PedalEngine, HandEngine, LevitationEngine) стал сущностью, 
 унаследованной от AbstractEngine. Пример приведен к PedalEngine
 ```
+@ToString
+@Getter
 @Entity
 @DiscriminatorValue("PEDAL")
+@NoArgsConstructor
 public class PedalEngine extends AbstractEngine {
+    private int size;
 ```
 Настройка связи между Car и Engine
 Класс Car преобразован в сущность JPA со связью @OneToOne к AbstractEngine.
@@ -346,7 +350,7 @@ public class CarController {
 ```
 spring:
   application:
-    name: products-api
+    name: kpo-app
   datasource:
     url: jdbc:postgresql://localhost:5432/car_db
     username: postgres
@@ -356,6 +360,7 @@ spring:
 #    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: update
 #      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
