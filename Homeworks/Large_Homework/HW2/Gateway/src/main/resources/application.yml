@@ -1,0 +1,10 @@
+grpc:
+  client:
+    analysis-service:
+      address: static://analysis:9092
+      negotiationType: plaintext
+    filestorage-service:
+      address: static://filestorage:9091
+      negotiationType: plaintext
+server:
+  port: 8081

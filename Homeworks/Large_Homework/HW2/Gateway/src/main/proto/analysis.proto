@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.homework.grpc";
+option java_outer_classname = "AnalysisServiceProto";
+
+service AnalysisService {
+  rpc analysisFile (GatewayRequestId) returns (GatewayResponseAnalysis);
+  rpc getCloud (GatewayToAnalysisRequestLocation) returns (AnalysisToGatewayResponseCloud);
+}
+
+message GatewayRequestId {
+  int32 id = 1;
+}
+message GatewayToAnalysisRequestLocation {
+  string location = 1;
+}
+
+message AnalysisToGatewayResponseCloud {
+  bool isExist = 1;
+  bytes cloud = 2;
+}
+
+message GatewayResponseAnalysis {
+  bool isExist = 1;
+  int32 countParagraphs = 2;
+  int32 countWords = 3;
+  int32 countCharacters = 4;
+  string location = 5;
+}

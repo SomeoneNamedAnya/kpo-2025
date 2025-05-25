@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: analysis-app
+  datasource:
+    url: jdbc:postgresql://analysis-db:5432/analysis_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    #      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+server:
+  port: 8082
+grpc:
+  server:
+    port: 9092
+  client:
+    filestorage-service:
+      address: static://filestorage:9091
+      negotiationType: plaintext

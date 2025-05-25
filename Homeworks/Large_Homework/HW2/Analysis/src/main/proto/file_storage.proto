@@ -1,0 +1,21 @@
+syntax =  "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.homework.grpc";
+option java_outer_classname = "FileStorageServiceProto";
+
+service FileStorageService {
+  rpc getFile (GatewayToFileStorageRequestId) returns (FileStorageToGatewayResponseFile);
+}
+
+
+message GatewayToFileStorageRequestId{
+  int32 id = 1;
+}
+
+message FileStorageToGatewayResponseFile {
+  bool isExist = 1;
+  string fileName = 2;
+  string  file = 3;
+  string message = 4;
+}
