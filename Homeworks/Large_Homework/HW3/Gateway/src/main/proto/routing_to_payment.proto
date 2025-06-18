@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.homework.grpc";
+option java_outer_classname = "RoutingToPaymentServiceProto";
+
+service PaymentService {
+  rpc createAccount (GatewayRequestId) returns (ResponseAccount);
+  rpc topUpAccount (GatewayRequestIdAndMoney) returns (ResponseTopUp);
+  rpc checkAccount (GatewayRequestId) returns (ResponseAccountScore);
+}
+
+message GatewayRequestId {
+  int32 id = 1;
+}
+
+message GatewayRequestIdAndMoney {
+  int32 id = 1;
+  float money = 2;
+}
+
+message ResponseAccount {
+  bool isOk = 1;
+  int32 idAccount = 2;
+}
+
+message ResponseTopUp {
+  bool isOk = 1;
+}
+
+message ResponseAccountScore {
+  bool isOk = 1;
+  float score = 3;
+}
