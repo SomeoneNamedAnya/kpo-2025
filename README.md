@@ -8,6 +8,3 @@
 - [`/Homeworks`](./Homeworks) - папка с мини-домашними работами
 - [`/Large Homework`](./Homeworks/Large_Homework) - папка с большими домашними работами
 
-## Badges
-
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=SomeoneNamedAnya_kpo-2025)
